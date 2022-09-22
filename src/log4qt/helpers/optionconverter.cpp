@@ -72,7 +72,7 @@ QString OptionConverter::findAndSubst(const Properties &properties,
             }
             auto keyName = value.mid(begin + begin_length, end - begin - end_length - 1);
             auto subValue = findAndSubst(properties, keyName);
-            if (subValue.isNull() && keyName.startsWith(QLatin1String("LOG4QT_")))
+            if (subValue.isEmpty())
                 subValue = qgetenv(qPrintable(keyName));
             result +=subValue;
             i = end + end_length;
